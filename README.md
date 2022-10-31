@@ -18,11 +18,11 @@ We will build a marketplace to allow the client (buyers) and sellers sell and bu
  * I can create and modify my store profile
  * I can view product purchases and mark them as shipped while adding tracking information
  * I can view client service requests on sales and respond
- * I can search the product catalog
  * I can see if my products are overprice compared to other sellers
  
  ###### As a User :
  * I can register, login, and logout
+ * I can search products
  * I can see product detail
  * I can ask for a refund
  * I can write reviews and rate the product
