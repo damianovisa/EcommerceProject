@@ -9,10 +9,9 @@
 
 		<div class="options">
 			<ul>
-				<li><a href='/Main/index'><?=_("Home")?></a></li>
-				<li><a href='/User/index'><?=_("Sign in")?></a></li>
 				
-
+				<li><a href='/User/index'><?=_("User log in")?></a></li>
+				
 			</ul>
 		</div>
 	</nav>

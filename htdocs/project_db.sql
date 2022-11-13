@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2022 at 06:17 PM
+-- Generation Time: Nov 13, 2022 at 11:44 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -91,6 +91,16 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `fname`, `lname`, `username`, `address`, `password_hash`) VALUES
+(1, '', '', 'Damiano', '', '123'),
+(3, 'Dam', 'Vis', 'Dami', '', '321'),
+(5, 'John', 'Smith', 'Johnny', '', '1111'),
+(6, 'Sally', 'Smith', 'Sal', '', '2222');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -160,7 +170,7 @@ ALTER TABLE `seller`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

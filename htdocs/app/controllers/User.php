@@ -7,7 +7,7 @@ class User extends \app\core\Controller{
 		if(isset($_POST['action'])){
 			$user = new \app\models\User();
 			$user = $user->getUser($_POST['username']);
-			if(password_verify($_POST['password_hash'], $user->password_hash)){
+			if(password_verify($_POST['password'],$user->password_hash)){
 				$_SESSION['user_id'] = $user->user_id;
 				$_SESSION['username'] = $user->username;
 				header('location:/Main/index');
@@ -28,8 +28,10 @@ class User extends \app\core\Controller{
 				if(!$nameIsUsed){
 					$user->username = $_POST['username'];
 					$user->password_hash = $_POST['password'];
+					$user->fname = $_POST['fname'];
+					$user->lname = $_POST['lname'];
 					$user->insertUser();
-					header('location: /	Main/index');
+					header('location:/User/index?message=Registered successfully');
 				}else{
 					header('location:/User/register?error=Username is already taken');	
 				}

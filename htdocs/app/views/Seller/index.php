@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?=_("User Login")?></title>
+	<title><?=_("Seller Login")?></title>
 </head>
 <body>
 
-<?php $this->view('userheader')?>
+<?php $this->view('sellerheader')?>
 
 <?php
 if(isset($_GET['error'])){

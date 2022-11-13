@@ -22,7 +22,7 @@ class Model{
 
 	public function isValid(){
 		$reflection = new \ReflectionObject($this);
-		$classProperties = $reflection->getProperties(); //reflectionProperties
+		$classProperties = $reflection->getProperties();
 		foreach ($classProperties as $property) {
 			$propertyAttributes = $property->getAttributes();
 			foreach ($propertyAttributes as $attribute) {

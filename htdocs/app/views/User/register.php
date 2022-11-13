@@ -1,20 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?=_("Register")?></title>
+	<title><?=_("User Register")?></title>
 </head>
 <body>
 
-<?php $this->view('header')?>
+<?php $this->view('userheader')?>
+
+<?php
+if(isset($_GET['error'])){
+?>
+<div class="alert alert-danger" role="alert">
+	<?=$_GET['error']?>
+</div>
+<?php
+}
+?>
 
 	<div class="container">
-		<form>
+		<form action="" method="post">
 			<h2><?=_("Register")?></h2>
+
+			<input placeholder="First name" type="text" name="fname" required>
+			<input placeholder="Last name" type="text" name="lname" required>
 			<input placeholder="Username" type="text" name="username" required>
-			<input placeholder="Password" type="password" name="password" required>
+			<input placeholder="Password" type="password" name="password" required>	
 			<input placeholder="Confirm password" type="password" name="password_conf" required>
 			<a class="login" href="index"><?=_("Have an account?")?></a>
 			<input class="register" type="submit" name="action" value="Register">
+
 		</form>
 	</div>
 </body>
@@ -87,6 +101,15 @@
 	form input:focus{
 		transition: 0.3s;
 		border: solid 2px black;
+	}
+	.alert-danger{
+		background-color: #dc3545;
+		text-align: center;
+		width: 30%;
+		margin: 0 auto;
+		border-radius:5px;
+		padding: 15px;
+		color: white;
 	}
 
 

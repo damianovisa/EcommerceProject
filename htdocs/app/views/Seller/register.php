@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?=_("User Login")?></title>
+	<title><?=_("Register")?></title>
 </head>
 <body>
 
-<?php $this->view('userheader')?>
+<?php $this->view('sellerheader')?>
 
 <?php
 if(isset($_GET['error'])){
@@ -19,12 +19,16 @@ if(isset($_GET['error'])){
 
 	<div class="container">
 		<form action="" method="post">
-			<h2><?=_("Log in")?></h2>
+			<h2><?=_("Register")?></h2>
 
+			<input placeholder="First name" type="text" name="fname" required>
+			<input placeholder="Last name" type="text" name="lname" required>
 			<input placeholder="Username" type="text" name="username" required>
-			<input placeholder="Password" type="password" name="password" required>
-			<a class="register" href="register"><?=_("Don't have an account?")?></a>
-			<input class="login" type="submit" name="action" value="Log in">
+			<input placeholder="Password" type="password" name="password" required>	
+			<input placeholder="Confirm password" type="password" name="password_conf" required>
+			<a class="login" href="index"><?=_("Have an account?")?></a>
+			<input class="register" type="submit" name="action" value="Register">
+
 		</form>
 	</div>
 </body>
@@ -47,7 +51,7 @@ if(isset($_GET['error'])){
 		height: 500px;
 		width: 20%;
 		transform: translate(-50%,-50%);
-		background-color:#332d2d;
+		background-color: #332d2d;
 		text-align: center;
 		border-radius: 10px;
 	}
@@ -76,19 +80,20 @@ if(isset($_GET['error'])){
 	h2{
 		color: white;
 	}
-	.login{
+	.register{
+		padding: 0 auto;
 		width: 50%;
 		transition: 0.3s;
 	}
 	::placeholder{
 		color: white;
 	}
-	.login:hover{
+	.register:hover{
 		color: black;
 		background-color:white ;
 		transition: 0.3s;
 	}
-	.register{
+	.login{
 		text-decoration: none;
 		color: #FFFFFF80;
 		font-size: 13px;
@@ -106,6 +111,7 @@ if(isset($_GET['error'])){
 		padding: 15px;
 		color: white;
 	}
+
 
 	</style>
 

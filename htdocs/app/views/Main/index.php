@@ -7,7 +7,7 @@
 </head>
 <body>
 
-	<?php $this->view('header')?>
+	<?php $this->view('/User/index')?>
 
 
 </body>
