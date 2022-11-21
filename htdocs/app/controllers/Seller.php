@@ -8,9 +8,9 @@ class Seller extends \app\core\Controller{
 			$seller = new \app\models\Seller();
 			$seller = $seller->getSeller($_POST['username']);
 			if(password_verify($_POST['password'],$seller->password_hash)){
-				$_SESSION['user_id'] = $seller->Seller_id;
+				$_SESSION['Seller_id'] = $seller->Seller_id;
 				$_SESSION['username'] = $seller->username;
-				header('location:/Main/index');
+				header('location:/Seller/home');
 			}else{
 				header('location:/Seller/index?error=Invalid credentials');
 			}
@@ -27,7 +27,7 @@ class Seller extends \app\core\Controller{
 				$nameIsUsed = $seller->getSeller($_POST['username']);
 				if(!$nameIsUsed){
 					$seller->username = $_POST['username'];
-					$seller->password_hash = $_POST['password'];
+					$seller->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 					$seller->fname = $_POST['fname'];
 					$seller->lname = $_POST['lname'];
 					$seller->insertSeller();
@@ -42,4 +42,9 @@ class Seller extends \app\core\Controller{
 			$this->view('Seller/register');
 		}
 	}
+
+	public function home(){
+		$this->view('/Seller/home');
+	}
+
 }

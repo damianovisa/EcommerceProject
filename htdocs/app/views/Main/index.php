@@ -8,7 +8,8 @@
 <body>
 
 	<?php $this->view('/User/index')?>
-
+	<?php header('location:/User/index') ?>
+	
 
 </body>
 </html>

@@ -5,7 +5,9 @@
 </head>
 <body>
 	<nav class="navigation">
-		<h1 class="title"><?=_("Something to buy") ?></h1>
+		<div class="titleLogo">
+		<h1 class="title"><?=_("Something to buy") ?></h1> <img class="logo" src="../../images/logo.png">
+		</div>
 
 		<div class="options">
 			<ul>
@@ -51,6 +53,14 @@
 	.options ul a{
 		color: white;
 	}
+	.logo{
+		width: 64px;
+		line-height: 64px;
+	}
+	.titleLogo{
+		display: flex;
+	}
+
 
 </style>
 
