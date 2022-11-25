@@ -21,7 +21,7 @@
 						    </button>
 					    <div class="dropdown-content">
 					      <a href="#"><?=_("Profile") ?></a>
-					      <a href="/index"><?=_("Log out") ?></a>
+					      <a href="Seller/logout"><?=_("Log out") ?></a>
 					    </div>
 					  </div> 
 				</li>
@@ -29,14 +29,18 @@
 		</div>
 	</nav>
 
-		<div class="addProductDiv">
+
+	<div class="addProductDiv">
 			<h1 class="addProduct"><?=_("Add a new product")?></h1>	
 			<form action="" method="post">
-				<input type="text" name="productName" placeholder="Product name">
-				<input type="text" name="productMan" placeholder="Manufacturer">
-				<input type="text" name="productPrice" placeholder="Price">
+				<input type="text" name="product_name" placeholder="Product name" required>
+				<input type="text" name="product_manufacturer" placeholder="Manufacturer" required>
+				<input type="text" name="product_price" placeholder="Price" required>
+				<input type="submit" name="action">
 			</form>
 		</div>
+
+
 
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');

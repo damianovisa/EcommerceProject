@@ -1,36 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?=_("Home")?></title>
+	<title><?=_("Add Product")?></title>
 </head>
 <body>
-
-<nav class="navigation">
-
-		<div class="titleLogo">
-		<h1 class="title"><?=_("Something to buy") ?></h1> <img class="logo" src="../../images/logo.png">
-		</div>
-
-		<div class="options">
-			<ul>
-				<li class="dashboard"><?=_("User Dashboard") ?></li>
-				<li> 
-					<div class="navbar">
-					  	<div class="dropdown">
-						    <button class="dropbtn"><?= $_SESSION['username'] ?> 
-						      <i class="fa fa-caret-down"></i>
-						    </button>
-					    <div class="dropdown-content">
-					      <a href="#"><?=_("Profile") ?></a>
-					      <a href="User/logout"><?=_("Log out") ?></a>
-					    </div>
-					  </div> 
-					</div>
-				</li>
-			</ul>
-		</div>
-	</nav>
-
+		
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
@@ -119,6 +93,18 @@
 
 	.dropdown:hover .dropdown-content {
 	  display: block;
+	}
+	.addProductDiv{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+	.addProductDiv h1{
+		color: black;
+	}
+	.addProductDiv input{
+		display: flex;
 	}
 </style>
 

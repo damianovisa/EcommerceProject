@@ -48,12 +48,9 @@ class User extends \app\core\Controller{
 	}
 
 	public function logout(){
-		header('location:/User/index');
+		session_destroy();
+		header('location:/Seller/index?message=Logged out');
 		
-	}
-
-	public function login(){
-		header('location:/User/home');
 	}
 
 }

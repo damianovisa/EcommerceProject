@@ -47,4 +47,11 @@ class Seller extends \app\core\Controller{
 		$this->view('/Seller/home');
 	}
 
+	public function logout(){
+		session_destroy();
+		header('location:/Seller/index?message=Logged out');
+	}
+
+	
+
 }
