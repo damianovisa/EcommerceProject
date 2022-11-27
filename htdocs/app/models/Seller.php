@@ -16,4 +16,5 @@ class Seller extends \app\core\Model{
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['username'=>$this->username,'password_hash'=>$this->password_hash,'fname'=>$this->fname,'lname'=>$this->lname]);
 	}
+
 }

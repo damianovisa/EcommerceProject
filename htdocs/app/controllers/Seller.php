@@ -52,6 +52,5 @@ class Seller extends \app\core\Controller{
 		header('location:/Seller/index?message=Logged out');
 	}
 
-	
 
 }
