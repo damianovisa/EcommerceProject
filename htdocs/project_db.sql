@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2022 at 11:44 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Nov 21, 2022 at 06:08 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,6 +42,7 @@ CREATE TABLE `inventory` (
 CREATE TABLE `order` (
   `order_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `Seller_id` int(11) NOT NULL,
   `order_total` int(11) NOT NULL,
   `order_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -54,6 +55,7 @@ CREATE TABLE `order` (
 
 CREATE TABLE `product` (
   `product_id` int(5) NOT NULL,
+  `Seller_id` int(11) NOT NULL,
   `product_name` varchar(50) NOT NULL,
   `product_manufacture` varchar(50) NOT NULL,
   `product_price` int(5) NOT NULL
@@ -67,13 +69,19 @@ CREATE TABLE `product` (
 
 CREATE TABLE `seller` (
   `Seller_id` int(11) NOT NULL,
-  `product_id` int(5) NOT NULL,
-  `order_id` int(11) NOT NULL,
   `fname` varchar(30) NOT NULL,
   `lname` varchar(30) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password_hash` varchar(72) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `seller`
+--
+
+INSERT INTO `seller` (`Seller_id`, `fname`, `lname`, `username`, `password_hash`) VALUES
+(1, 'Sel', 'S', 'Seller', '$2y$10$1GERrFYVIgPEZGG0dUTREenJqUI54yIHSI.Pg0q71cm/1JmWWD5l.'),
+(2, 'AS', 'SA', 'ASS912', '$2y$10$jSQUCDeELu2MzaWx2fe0feGfLs2Lj3uqit.oJ5vkF3v1XlHSeTJM2');
 
 -- --------------------------------------------------------
 
@@ -95,10 +103,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `fname`, `lname`, `username`, `address`, `password_hash`) VALUES
-(1, '', '', 'Damiano', '', '123'),
-(3, 'Dam', 'Vis', 'Dami', '', '321'),
-(5, 'John', 'Smith', 'Johnny', '', '1111'),
-(6, 'Sally', 'Smith', 'Sal', '', '2222');
+(10, 'Test', 'T', 'Tester', '', '$2y$10$HzYM7ENugBnw0triFUD/2.hdTfrALOAIXG.XyPcNJoico5OqpsQ6.'),
+(11, 'Damiano', 'Visalli', 'Dam', '', '$2y$10$3BXWullbiZIu2nShacPAzOYJdBOitREQd2MWZP8Sw11SPAaCq6yDq'),
+(12, 'Bob', 'Bob', 'Bobby', '', '$2y$10$TOvN1dBSWkFHfu3Fm96jy.AKGyYNL8i44l9R1JXpYKslvWJ4QJNve'),
+(13, 'yassine', 'El yamani', 'yass', '', '$2y$10$cxHZcdVe5LI3xQgxMXRl4eCedtk439IKcoetKgjUuw97F4KdWgXT2'),
+(14, 'Syed Naseem', 'Afzal', 'SyedAf', '', '$2y$10$NUx1sbOUwc6Vc/mEEZqXZ.7W.oItN/B.q1yU2wunsXxrPtNWa7TNC');
 
 --
 -- Indexes for dumped tables
@@ -116,21 +125,21 @@ ALTER TABLE `inventory`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`order_id`),
-  ADD KEY `user_id_FK` (`user_id`);
+  ADD KEY `user_id_FK` (`user_id`),
+  ADD KEY `sellerOnOrder_id_FK` (`Seller_id`);
 
 --
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_id`);
+  ADD PRIMARY KEY (`product_id`),
+  ADD KEY `seller_id_fk` (`Seller_id`);
 
 --
 -- Indexes for table `seller`
 --
 ALTER TABLE `seller`
-  ADD PRIMARY KEY (`Seller_id`),
-  ADD KEY `order_FK` (`order_id`),
-  ADD KEY `productseller_FK` (`product_id`);
+  ADD PRIMARY KEY (`Seller_id`);
 
 --
 -- Indexes for table `user`
@@ -164,13 +173,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
-  MODIFY `Seller_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -186,14 +195,14 @@ ALTER TABLE `inventory`
 -- Constraints for table `order`
 --
 ALTER TABLE `order`
+  ADD CONSTRAINT `sellerOnOrder_id_FK` FOREIGN KEY (`Seller_id`) REFERENCES `seller` (`Seller_id`),
   ADD CONSTRAINT `user_id_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- Constraints for table `seller`
+-- Constraints for table `product`
 --
-ALTER TABLE `seller`
-  ADD CONSTRAINT `order_FK` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
-  ADD CONSTRAINT `productseller_FK` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+ALTER TABLE `product`
+  ADD CONSTRAINT `seller_id_fk` FOREIGN KEY (`Seller_id`) REFERENCES `seller` (`Seller_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -17,9 +17,19 @@ if(isset($_GET['error'])){
 }
 ?>
 
+<?php
+if(isset($_GET['message'])){
+?>
+<div class="alert alert-success" role="alert">
+	<?=$_GET['message']?>
+</div>
+<?php
+}
+?>
+
 	<div class="container">
 		<form action="" method="post">
-			<h2><?=_("Log in")?></h2>
+			<h2><?=_("Seller Log in")?></h2>
 
 			<input placeholder="Username" type="text" name="username" required>
 			<input placeholder="Password" type="password" name="password" required>
@@ -105,6 +115,15 @@ if(isset($_GET['error'])){
 		border-radius:5px;
 		padding: 15px;
 		color: white;
+	}
+	.alert-success{
+		background-color: #d1e7dd;
+		text-align: center;
+		width: 30%;
+		margin: 0 auto;
+		border-radius:5px;
+		padding: 15px;
+		color: black;
 	}
 
 	</style>

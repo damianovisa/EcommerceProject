@@ -10,7 +10,7 @@ class User extends \app\core\Controller{
 			if(password_verify($_POST['password'],$user->password_hash)){
 				$_SESSION['user_id'] = $user->user_id;
 				$_SESSION['username'] = $user->username;
-				header('location:/Main/index');
+				header('location:/User/home');
 			}else{
 				header('location:/User/index?error=Invalid credentials');
 			}
@@ -27,7 +27,7 @@ class User extends \app\core\Controller{
 				$nameIsUsed = $user->getUser($_POST['username']);
 				if(!$nameIsUsed){
 					$user->username = $_POST['username'];
-					$user->password_hash = $_POST['password'];
+					$user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 					$user->fname = $_POST['fname'];
 					$user->lname = $_POST['lname'];
 					$user->insertUser();
@@ -42,4 +42,15 @@ class User extends \app\core\Controller{
 			$this->view('User/register');
 		}
 	}
+
+	public function home(){
+		$this->view('/User/home');
+	}
+
+	public function logout(){
+		session_destroy();
+		header('location:/Seller/index?message=Logged out');
+		
+	}
+
 }
