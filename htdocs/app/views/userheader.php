@@ -7,7 +7,7 @@
 	<nav class="navigation">
 
 		<div class="titleLogo">
-		<h1 class="title"><?=_("Something to buy") ?></h1> <img class="logo" src="../../images/logo.png">
+		<h1 class="title"><?=_("TechW0rld") ?></h1> <img class="logo" src="../../images/logo.png">
 		</div>
 
 		<div class="options">

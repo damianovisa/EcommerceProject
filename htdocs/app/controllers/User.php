@@ -44,12 +44,15 @@ class User extends \app\core\Controller{
 	}
 
 	public function home(){
-		$this->view('/User/home');
+		$product = new \app\models\Product();
+        $products = $product->getAllProducts();
+
+		$this->view('/User/home', $products);
 	}
 
 	public function logout(){
 		session_destroy();
-		header('location:/Seller/index?message=Logged out');
+		header('location:/User/index?message=Logged out');
 		
 	}
 

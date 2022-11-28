@@ -5,6 +5,32 @@
 </head>
 <body>
 
+<nav class="navigation">
+
+		<div class="titleLogo">
+		<h1 class="title"><?=_("TechW0rld") ?></h1> <img class="logo" src="../../images/logo.png">
+		</div>
+
+		<div class="options">
+			<ul>
+				<li class="dashboard"><?=_("Seller add product") ?></li>
+				<li>
+					<div class="dropdown">
+						    <button class="dropbtn"><?= $_SESSION['username']?> 
+						      <i class="fa fa-caret-down"></i>
+						    </button>
+					    <div class="dropdown-content">
+					      <a href="/Seller/home"><?=_("View your products") ?></a>
+					      <a href="logout"><?=_("Log out") ?></a>
+					    </div>
+					  </div> 
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+
+
 <?php
 if(isset($_GET['error'])){
 ?>
@@ -25,39 +51,21 @@ if(isset($_GET['message'])){
 }
 ?>
 	
-<nav class="navigation">
 
-		<div class="titleLogo">
-		<h1 class="title"><?=_("Something to buy") ?></h1> <img class="logo" src="../../images/logo.png">
-		</div>
-
-		<div class="options">
-			<ul>
-				<li class="dashboard"><?=_("Seller add product") ?></li>
-				<li>
-					<div class="dropdown">
-						    <button class="dropbtn"><?= $_SESSION['username'] ?> 
-						      <i class="fa fa-caret-down"></i>
-						    </button>
-					    <div class="dropdown-content">
-					      <a href="#"><?=_("Profile") ?></a>
-					      <a href="Product/logout"><?=_("Log out") ?></a>
-					    </div>
-					  </div> 
-				</li>
-			</ul>
-		</div>
-	</nav>
 
 <div class="addProductDiv">
-			<h1 class="addProduct"><?=_("Add a new product")?></h1>	
+			
 			<form action="" method="post">
+				<h2 class="addProduct"><?=_("Add a new product")?></h2>	
 				<input type="text" name="product_name" placeholder="Product name" required>
-				<input type="text" name="product_manufacturer" placeholder="Manufacturer" required>
+				<input type="text" name="product_manufacture" placeholder="Manufacturer" required>
 				<input type="text" name="product_price" placeholder="Price" required>
-				<input type="submit" name="action">
+				<!-- <input type="file" name="product_image" required> -->
+				<input type="submit" name="action" class="add" value="Add">
 			</form>
-		</div>
+</div>
+
+
 
 		
 <style type="text/css">
@@ -69,7 +77,7 @@ if(isset($_GET['message'])){
 		padding: 0;
 		background-color: #ffffff;
 	}
-	h1{
+	.title{
 		color: white;
 	}
 	.navigation{
@@ -96,6 +104,69 @@ if(isset($_GET['message'])){
 		border-radius:5px;
 		padding: 15px;
 		color: black;
+	}
+	.addProductDiv{
+		display: flex;
+		padding: 5px;
+		margin: 25px auto;
+/*		position: absolute;*/
+		/*top: 50%;
+		left: 50%;*/
+		height: 550px;
+		width: 80%;
+/*		transform: translate(-50%,-50%);*/
+		background-color:#332d2d;
+		text-align: center;
+		border-radius: 10px;
+	}
+	h2{
+		color: white;
+	}
+	form{
+/*		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);*/
+		width: 90%;
+		height: 90%;
+		margin: auto;
+
+	}
+	form input{ 
+		display: flex;
+		margin: 25px auto;
+		width: 100%;
+		height: 35px;
+		border-radius: 5px;
+		outline: none;
+		border:white solid 2px;
+		padding: 5px 10px;
+		background-color: transparent;
+		color: white;
+		font-size: 16px;
+		transition: 0.3s;
+	}
+	.add{
+		margin: 10px auto;
+		border-radius: 5px;
+		padding: 10px 15px;
+		border: none;
+		background-color: #5cdb5c;
+		color: white;
+		transition: 0.3s;
+		width: 20%;
+	
+	}
+	::placeholder{
+		color: white;
+	}
+	.add:hover{
+		opacity: 0.7;
+		transition: 0.3s;
+	}
+	form input:focus{
+		transition: 0.3s;
+		border: solid 2px black;
 	}
 
 	.options{
@@ -150,6 +221,7 @@ if(isset($_GET['message'])){
 	  background-color: white;
 	  width: 160px;	
 	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 2;
 	}
 
 	.dropdown-content a {
@@ -168,18 +240,7 @@ if(isset($_GET['message'])){
 	.dropdown:hover .dropdown-content {
 	  display: block;
 	}
-	.addProductDiv{
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%,-50%);
-	}
-	.addProductDiv h1{
-		color: black;
-	}
-	.addProductDiv input{
-		display: flex;
-	}
+	
 </style>
 
 </body>

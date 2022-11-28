@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2022 at 06:08 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Nov 28, 2022 at 06:02 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,8 +58,22 @@ CREATE TABLE `product` (
   `Seller_id` int(11) NOT NULL,
   `product_name` varchar(50) NOT NULL,
   `product_manufacture` varchar(50) NOT NULL,
-  `product_price` int(5) NOT NULL
+  `product_price` int(5) NOT NULL,
+  `product_image` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `Seller_id`, `product_name`, `product_manufacture`, `product_price`, `product_image`) VALUES
+(1, 3, 'Mouse', 'Logitech', 100, ''),
+(2, 3, 'RTX 3090', 'Nvidia', 4000, ''),
+(3, 3, 'RTX 4090', 'Nvidia', 5000, ''),
+(4, 1, 'Mouse', 'Razer', 80, ''),
+(5, 3, 'Chair', 'SecretLab', 450, ''),
+(6, 1, 'Headset', 'Turtle Beach', 180, ''),
+(7, 1, 'KeyBoard', 'Logitech', 100, '');
 
 -- --------------------------------------------------------
 
@@ -81,7 +95,8 @@ CREATE TABLE `seller` (
 
 INSERT INTO `seller` (`Seller_id`, `fname`, `lname`, `username`, `password_hash`) VALUES
 (1, 'Sel', 'S', 'Seller', '$2y$10$1GERrFYVIgPEZGG0dUTREenJqUI54yIHSI.Pg0q71cm/1JmWWD5l.'),
-(2, 'AS', 'SA', 'ASS912', '$2y$10$jSQUCDeELu2MzaWx2fe0feGfLs2Lj3uqit.oJ5vkF3v1XlHSeTJM2');
+(2, 'AS', 'SA', 'ASS912', '$2y$10$jSQUCDeELu2MzaWx2fe0feGfLs2Lj3uqit.oJ5vkF3v1XlHSeTJM2'),
+(3, 'Dam', 'Visa', 'Dami', '$2y$10$S3PT2ei.WOLT9bU3OeVTcuUWt23UFfIBwHI.I9gbF5OEHmGjfhG2a');
 
 -- --------------------------------------------------------
 
@@ -105,9 +120,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `fname`, `lname`, `username`, `address`, `password_hash`) VALUES
 (10, 'Test', 'T', 'Tester', '', '$2y$10$HzYM7ENugBnw0triFUD/2.hdTfrALOAIXG.XyPcNJoico5OqpsQ6.'),
 (11, 'Damiano', 'Visalli', 'Dam', '', '$2y$10$3BXWullbiZIu2nShacPAzOYJdBOitREQd2MWZP8Sw11SPAaCq6yDq'),
-(12, 'Bob', 'Bob', 'Bobby', '', '$2y$10$TOvN1dBSWkFHfu3Fm96jy.AKGyYNL8i44l9R1JXpYKslvWJ4QJNve'),
-(13, 'yassine', 'El yamani', 'yass', '', '$2y$10$cxHZcdVe5LI3xQgxMXRl4eCedtk439IKcoetKgjUuw97F4KdWgXT2'),
-(14, 'Syed Naseem', 'Afzal', 'SyedAf', '', '$2y$10$NUx1sbOUwc6Vc/mEEZqXZ.7W.oItN/B.q1yU2wunsXxrPtNWa7TNC');
+(12, 'Bob', 'Bob', 'Bobby', '', '$2y$10$TOvN1dBSWkFHfu3Fm96jy.AKGyYNL8i44l9R1JXpYKslvWJ4QJNve');
 
 --
 -- Indexes for dumped tables
@@ -167,19 +180,19 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
-  MODIFY `Seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
