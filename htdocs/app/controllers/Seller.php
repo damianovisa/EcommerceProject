@@ -10,7 +10,7 @@ class Seller extends \app\core\Controller{
 			if(password_verify($_POST['password'],$seller->password_hash)){
 				$_SESSION['Seller_id'] = $seller->Seller_id;
 				$_SESSION['username'] = $seller->username;
-				header('location:/Seller/home');
+				header('location:/Product/addProduct');
 			}else{
 				header('location:/Seller/index?error=Invalid credentials');
 			}
@@ -44,8 +44,14 @@ class Seller extends \app\core\Controller{
 	}
 
 	public function home(){
-		$this->view('/Seller/home');
+		$product = new \app\models\Product();
+        $products = $product->getBySeller($_SESSION['Seller_id']);
+
+		$this->view('/Seller/home', $products);
 	}
+
+
+	
 
 	public function logout(){
 		session_destroy();

@@ -8,7 +8,7 @@
 <nav class="navigation">
 
 		<div class="titleLogo">
-		<h1 class="title"><?=_("Something to buy") ?></h1> <img class="logo" src="../../images/logo.png">
+		<h1 class="title"><?=_("TechW0rld") ?></h1> <img class="logo" src="../../images/logo.png">
 		</div>
 
 		<div class="options">
@@ -21,8 +21,7 @@
 						      <i class="fa fa-caret-down"></i>
 						    </button>
 					    <div class="dropdown-content">
-					      <a href="#"><?=_("Profile") ?></a>
-					      <a href="User/logout"><?=_("Log out") ?></a>
+					      <a href="logout"><?=_("Log out") ?></a>
 					    </div>
 					  </div> 
 					</div>
@@ -31,8 +30,71 @@
 		</div>
 	</nav>
 
+
+<div class="container">
+    <div class="row">
+        <h1>Products</h1>
+
+    </div>
+    <div class="row">
+        <?php foreach ($data as $item){?>
+        <div class="colBox">
+            <div class="card" >
+                <div>
+                    <h4 class="card-title"><?php echo $item->product_name;?></h4>
+                    <p class="card-text"><?php echo $item->product_manufacture;?></p>
+					<p class="card-text">$<?php echo $item->product_price;?></p>
+					<button type="submit" name="addToCart" class="addToCart">Add to cart</button>
+                </div>
+            </div>
+        </div>
+        <?php }?>
+    </div>
+</div>
+
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+	.row h1{
+		color: black;
+	}
+	.row{
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 auto;
+		width: 90%;
+		justify-content: space-evenly;
+	}
+	.colBox{
+		border-radius: 15px;
+		font-size: 22px;
+		color: white;
+		text-align: center;
+		background-color: #332d2d;
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
+		padding: 15px;
+		margin: 20px 10px;
+		width: 300px;	
+	}
+	.card div{
+		text-align: center;
+	}
+	.card p{
+		color: rgba(190, 190, 190, 1);
+	}
+	.addToCart{
+		margin: 10px auto;
+		border-radius: 5px;
+		padding: 10px 15px;
+		border: none;
+		background-color: #5cdb5c;
+		color: black;
+		transition: 0.3s;
+	}
+	.addToCart:hover{
+		opacity: 0.7;
+		transition: 0.3s;
+	}
 
 	body{
 		font-family: 'Poppins', sans-serif;
