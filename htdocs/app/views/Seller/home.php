@@ -9,25 +9,6 @@
 </head>
 <body>
 
-<?php
-if(isset($_GET['error'])){
-?>
-<div class="alert alert-danger" role="alert">
-	<?=$_GET['error']?>
-</div>
-<?php
-}
-?>
-
-<?php
-if(isset($_GET['message'])){
-?>
-<div class="alert alert-success" role="alert">
-	<?=$_GET['message']?>
-</div>
-<?php
-}
-?>
 
 <nav class="navigation">
 
@@ -53,6 +34,25 @@ if(isset($_GET['message'])){
 		</div>
 	</nav>
 
+<?php
+if(isset($_GET['error'])){
+?>
+<div class="alert alert-danger" role="alert">
+	<?=$_GET['error']?>
+</div>
+<?php
+}
+?>
+
+<?php
+if(isset($_GET['message'])){
+?>
+<div class="alert alert-success" role="alert">
+	<?=$_GET['message']?>
+</div>
+<?php
+}
+?>
 
 
 	<div class="container">
@@ -68,7 +68,7 @@ if(isset($_GET['message'])){
                     <h4 class="card-title"><?php echo $item->product_name;?></h4>
                     <p class="card-text"><?php echo $item->product_manufacture;?></p>
 					<p class="card-text">$<?php echo $item->product_price;?></p>
-					<button type="submit" name="delete" class="delete">Delete</button>
+					<a type="submit" class="delete" href='/Product/delete/<?= $item->product_id?>'>delete</a>
                 </div>
             </div>
         </div>
@@ -105,9 +105,11 @@ if(isset($_GET['message'])){
 		color: rgba(190, 190, 190, 1);
 	}
 	.delete{
+		font-size: 15px;
+		text-decoration: none;
 		margin: 10px auto;
 		border-radius: 5px;
-		padding: 10px 15px;
+		padding: 5px 10px;
 		border: none;
 		background-color: #ED4337;
 		color: black;
