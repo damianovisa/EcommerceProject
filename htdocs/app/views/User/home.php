@@ -22,8 +22,8 @@
 						    </button>
 					    <div class="dropdown-content">
 					    	<a href="/Cart/index"><?=_("Cart") ?></a>
-					    	<a href="/User/contactUs"><?=_("Contact Us") ?></a>
-					      <a href="logout"><?=_("Log out") ?></a>
+					    	<a href="/ContactUs/index"><?=_("Contact Us") ?></a>
+					      <a href="logout" class="logOutBtn"><?=_("Log out") ?></a>
 					    </div>
 					  </div> 
 					</div>
@@ -56,7 +56,7 @@ if(isset($_GET['message'])){
 
 <div class="container">
     <div class="row">
-        <h1>Products</h1>
+        <h1><?=_("Products")?></h1>
 
     </div>
     <div class="row">
@@ -67,7 +67,7 @@ if(isset($_GET['message'])){
                     <h4 class="card-title" name="product_name"><?php echo $item->product_name;?></h4>
                     <p class="card-text" name="product_manufacture"><?php echo $item->product_manufacture;?></p>
 					<p class="card-text" name="product_price">$<?php echo $item->product_price;?></p>
-					<a type="submit" name="add" class="addToCart" href='addToCart'>Add to cart</a>
+					<a type="submit" name="add" class="addToCart" href='/Cart/addToCart'><?=_("Add to cart") ?></a>
                 </div>
             </div>
         </div>
@@ -78,6 +78,10 @@ if(isset($_GET['message'])){
 
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+	
+	.logOutBtn{
+		background-color: #b23b3b;
+	}
 
 	.row h1{
 		color: black;
@@ -196,6 +200,7 @@ if(isset($_GET['message'])){
 	  float: none;
 	  color: black;
 	  padding: 12px 16px;
+	  margin: 10px;
 	  text-decoration: none;
 	  display: block;
 	  text-align: left;

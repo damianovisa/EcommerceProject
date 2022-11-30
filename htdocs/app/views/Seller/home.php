@@ -26,7 +26,8 @@
 						    </button>
 					    <div class="dropdown-content">
 					      <a href="/Product/addProduct"><?=_("Add products") ?></a>
-					      <a href="logout"><?=_("Log out") ?></a>
+					      <a href="/ContactUs/viewMessages"><?=_("View messages") ?></a>
+					      <a class="logOutBtn" href="logout"><?=_("Log out") ?></a>
 					    </div>
 					  </div> 
 				</li>
@@ -79,6 +80,10 @@ if(isset($_GET['message'])){
 
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+	.logOutBtn{
+		background-color: #b23b3b;
+	}
 
 	.row h1{
 		color: black;
@@ -214,6 +219,7 @@ if(isset($_GET['message'])){
 	  float: none;
 	  color: black;
 	  padding: 12px 16px;
+	  margin: 10px;
 	  text-decoration: none;
 	  display: block;
 	  text-align: left;

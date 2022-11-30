@@ -22,7 +22,7 @@
                         <div class="dropdown-content">
                             <a href="/Cart/index"><?=_("Cart") ?></a>
                           <a href="/User/home"><?=_("Products") ?></a>
-                          <a href="logout"><?=_("Log out") ?></a>
+                          <a class="logOutBtn" href="/User/logout"><?=_("Log out") ?></a>
                         </div>
                       </div> 
                 </li>
@@ -68,6 +68,10 @@ if(isset($_GET['message'])){
         
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    
+    .logOutBtn{
+        background-color: #b23b3b;
+    }
 
     body{
         font-family: 'Poppins', sans-serif;
@@ -240,6 +244,7 @@ if(isset($_GET['message'])){
       float: none;
       color: black;
       padding: 12px 16px;
+      margin: 10px;
       text-decoration: none;
       display: block;
       text-align: left;

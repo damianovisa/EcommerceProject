@@ -22,8 +22,8 @@
 						    </button>
 					    <div class="dropdown-content">
 					    	<a href="/User/home"><?=_("Products") ?></a>
-					    	<a href="/User/contactUs"><?=_("Contact Us") ?></a>
-					      <a href="logout"><?=_("Log out") ?></a>
+					    	<a href="/ContactUs/index"><?=_("Contact Us") ?></a>
+					      <a class="logOutBtn" href="logout"><?=_("Log out") ?></a>
 					    </div>
 					  </div> 
 					</div>
@@ -46,7 +46,7 @@
                     <h4 class="card-title"><?php echo $item->product_name;?></h4>
                     <p class="card-text"><?php echo $item->product_manufacture;?></p>
 					<p class="card-text">$<?php echo $item->product_price;?></p>
-					<!-- <button type="submit" name="addToCart" class="addToCart">Add to cart</button> -->
+					<!-- <a type="submit" class="remove" href='/Cart/delete/<?= $item->product_id?>'>Remove</a> -->
                 </div>
             </div>
         </div>
@@ -58,6 +58,9 @@
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+	.logOutBtn{
+		background-color: #b23b3b;
+	}
 	.row h1{
 		color: black;
 	}
@@ -173,6 +176,7 @@
 	  float: none;
 	  color: black;
 	  padding: 12px 16px;
+	  margin: 10px;
 	  text-decoration: none;
 	  display: block;
 	  text-align: left;

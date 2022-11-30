@@ -12,4 +12,21 @@ class ContactUs extends \app\core\Model{
         'message'=>$this->message]);
 	}
 
+	public function getMessages(){
+        $sql = "SELECT * FROM contact";
+		$STMT = self::$_connection->prepare($sql);
+		$STMT->execute();
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\ContactUs');
+		return $STMT->fetchAll();
+    }
+
+    public function getById($message_id)
+    {
+        $SQL = "SELECT * FROM contact WHERE message_id=:message_id";
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['message_id' => $message_id]);
+        $STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\ContactUs');
+        return $STMT->fetch();
+    }
+
 }
