@@ -22,6 +22,7 @@
 						    </button>
 					    <div class="dropdown-content">
 					    	<a href="/User/home"><?=_("Products") ?></a>
+					    	<a href="/User/contactUs"><?=_("Contact Us") ?></a>
 					      <a href="logout"><?=_("Log out") ?></a>
 					    </div>
 					  </div> 

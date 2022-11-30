@@ -20,7 +20,8 @@
                               <i class="fa fa-caret-down"></i>
                             </button>
                         <div class="dropdown-content">
-                          <a href="/Seller/home"><?=_("Products") ?></a>
+                            <a href="/Cart/index"><?=_("Cart") ?></a>
+                          <a href="/User/home"><?=_("Products") ?></a>
                           <a href="logout"><?=_("Log out") ?></a>
                         </div>
                       </div> 

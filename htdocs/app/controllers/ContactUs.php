@@ -8,11 +8,10 @@ class ContactUs extends \app\core\Controller{
             $user = new \app\models\User();
 
             if (isset($_POST['action'])) {
-                $concact->message = $_POST['message'];
-                $user->user_id = $_SESSION['user_id'];
-                $user->username = $_SESSION['username'];
-    
-               $contact->insertMessage();
+                // $concact->message = $_POST['message'];
+                // $user->user_id = $_SESSION['user_id'];
+                // $user->username = $_SESSION['username'];
+               // $contact->insertMessage();
             }else{
             	$this->view('User/contactUs', $user);
 			}
