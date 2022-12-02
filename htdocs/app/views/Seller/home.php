@@ -9,6 +9,32 @@
 </head>
 <body>
 
+
+<nav class="navigation">
+
+		<div class="titleLogo">
+		<h1 class="title"><?=_("TechW0rld") ?></h1> <img class="logo" src="../../images/logo.png">
+		</div>
+
+		<div class="options">
+			<ul>
+				<li class="dashboard"><?=_("Seller Dashboard") ?></li>
+				<li>
+					<div class="dropdown">
+						    <button class="dropbtn"><?= $_SESSION['username'] ?> 
+						      <i class="fa fa-caret-down"></i>
+						    </button>
+					    <div class="dropdown-content">
+					      <a href="/Product/addProduct"><?=_("Add products") ?></a>
+					      <a href="/ContactUs/viewMessages"><?=_("View messages") ?></a>
+					      <a class="logOutBtn" href="logout"><?=_("Log out") ?></a>
+					    </div>
+					  </div> 
+				</li>
+			</ul>
+		</div>
+	</nav>
+
 <?php
 if(isset($_GET['error'])){
 ?>
@@ -29,31 +55,6 @@ if(isset($_GET['message'])){
 }
 ?>
 
-<nav class="navigation">
-
-		<div class="titleLogo">
-		<h1 class="title"><?=_("TechW0rld") ?></h1> <img class="logo" src="../../images/logo.png">
-		</div>
-
-		<div class="options">
-			<ul>
-				<li class="dashboard"><?=_("Seller Dashboard") ?></li>
-				<li>
-					<div class="dropdown">
-						    <button class="dropbtn"><?= $_SESSION['username'] ?> 
-						      <i class="fa fa-caret-down"></i>
-						    </button>
-					    <div class="dropdown-content">
-					      <a href="/Product/addProduct"><?=_("Add products") ?></a>
-					      <a href="logout"><?=_("Log out") ?></a>
-					    </div>
-					  </div> 
-				</li>
-			</ul>
-		</div>
-	</nav>
-
-
 
 	<div class="container">
     <div class="row">
@@ -68,7 +69,7 @@ if(isset($_GET['message'])){
                     <h4 class="card-title"><?php echo $item->product_name;?></h4>
                     <p class="card-text"><?php echo $item->product_manufacture;?></p>
 					<p class="card-text">$<?php echo $item->product_price;?></p>
-					<button type="submit" name="delete" class="delete">Delete</button>
+					<a type="submit" class="delete" href='/Product/delete/<?= $item->product_id?>'>delete</a>
                 </div>
             </div>
         </div>
@@ -79,6 +80,10 @@ if(isset($_GET['message'])){
 
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+	.logOutBtn{
+		background-color: #b23b3b;
+	}
 
 	.row h1{
 		color: black;
@@ -105,9 +110,11 @@ if(isset($_GET['message'])){
 		color: rgba(190, 190, 190, 1);
 	}
 	.delete{
+		font-size: 15px;
+		text-decoration: none;
 		margin: 10px auto;
 		border-radius: 5px;
-		padding: 10px 15px;
+		padding: 5px 10px;
 		border: none;
 		background-color: #ED4337;
 		color: black;
@@ -212,6 +219,7 @@ if(isset($_GET['message'])){
 	  float: none;
 	  color: black;
 	  padding: 12px 16px;
+	  margin: 10px;
 	  text-decoration: none;
 	  display: block;
 	  text-align: left;

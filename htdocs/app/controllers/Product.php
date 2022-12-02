@@ -30,5 +30,21 @@ class Product extends \app\core\Controller{
 		header('location:/Seller/index?message=Logged out');
 	}
 
+
+	public function delete($product_id){
+		$product = new \app\models\Product();
+		$product = $product->getByProduct($product_id);
+		$product->product_id = $product_id;
+
+		// $product->Seller_id = $_SESSION['Seller_id'];
+		// $product->product_id = $_SESSION['product_id'];
+		// $product->product_id = $product_id;
+
+		//var_dump($product);
+
+		$product->delete();
+		header('location:/Seller/home?message=Product removed');
+	}
+
 	
 }

@@ -40,14 +40,14 @@ class Product extends \app\core\Model{
         $STMT = self::$_connection->prepare($SQL);
         $STMT->execute(['product_id' => $product_id]);
         $STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Product');
-        return $STMT->fetchAll();
+        return $STMT->fetch();
     }
 
-    // public function deleteProduct(){
-    //     $SQL = "DELETE FROM product WHERE product_id=:product_id";
-    //     $STMT = self::$_connection->prepare($SQL);
-    //     $STMT->execute(['product_id'=>$this->product_id]);
-    // }
+    public function delete(){
+        $SQL = "DELETE FROM product WHERE product_id=:product_id";
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['product_id'=>$this->product_id]);
+    }
 
 
 	
