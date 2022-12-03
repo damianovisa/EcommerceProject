@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2022 at 06:37 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Dec 03, 2022 at 09:47 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,10 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `product_name` varchar(50) NOT NULL,
-  `product_manufacture` varchar(50) NOT NULL,
-  `product_price` double(20,0) NOT NULL,
-  `product_image` varchar(150) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `product_price` double(20,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -48,6 +46,15 @@ CREATE TABLE `contact` (
   `username` varchar(50) NOT NULL,
   `message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`message_id`, `user_id`, `username`, `message`) VALUES
+(2, 10, 'Tester', 'Hi i wanted to know if the ...... product would ever be published, if so I would like to know when.'),
+(3, 11, 'Dam', 'Hi i wanted to know if there will ever be any PS5 related products like controllers or headset, currently in need of a controller, if so I would like to know when. \r\n\r\nThank you'),
+(4, 11, 'Dam', 'Wassup my man');
 
 -- --------------------------------------------------------
 
@@ -86,7 +93,7 @@ CREATE TABLE `product` (
   `Seller_id` int(11) NOT NULL,
   `product_name` varchar(50) NOT NULL,
   `product_manufacture` varchar(50) NOT NULL,
-  `product_price` double(20,0) NOT NULL,
+  `product_price` int(5) NOT NULL,
   `product_image` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -95,8 +102,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `Seller_id`, `product_name`, `product_manufacture`, `product_price`, `product_image`) VALUES
-(1, 3, 'Mouse', 'Logitech', 100, ''),
 (2, 3, 'RTX 3090', 'Nvidia', 4000, ''),
+(3, 3, 'RTX 4090', 'Nvidia', 5000, ''),
+(4, 1, 'Mouse', 'Razer', 80, ''),
 (5, 3, 'Chair', 'SecretLab', 450, ''),
 (6, 1, 'Headset', 'Turtle Beach', 180, ''),
 (7, 1, 'KeyBoard', 'Logitech', 100, '');
@@ -123,7 +131,7 @@ INSERT INTO `seller` (`Seller_id`, `fname`, `lname`, `username`, `password_hash`
 (1, 'Sel', 'S', 'Seller', '$2y$10$1GERrFYVIgPEZGG0dUTREenJqUI54yIHSI.Pg0q71cm/1JmWWD5l.'),
 (2, 'AS', 'SA', 'ASS912', '$2y$10$jSQUCDeELu2MzaWx2fe0feGfLs2Lj3uqit.oJ5vkF3v1XlHSeTJM2'),
 (3, 'Dam', 'Visa', 'Dami', '$2y$10$S3PT2ei.WOLT9bU3OeVTcuUWt23UFfIBwHI.I9gbF5OEHmGjfhG2a'),
-(4, 'Mr', 'Gay', 'GayLord', '$2y$10$ImYMRNr0mCoQjjtPV4lPRuCK1E1MFl/F7DUnKqUDqL6deidUP5hDO');
+(4, 'rob', 'can', 'robcan', '$2y$10$2DG2NGO4nhI.wozlMDagbenCcYZqpN61eABp6QjfswjE6K1ibfB6u');
 
 -- --------------------------------------------------------
 
@@ -158,14 +166,14 @@ INSERT INTO `user` (`user_id`, `fname`, `lname`, `username`, `address`, `passwor
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cart_id`),
-  ADD KEY `cart_productID_fk` (`product_id`);
+  ADD KEY `cart_productID_fk` (`product_id`),
+  ADD KEY `cart_userID_fk` (`user_id`);
 
 --
 -- Indexes for table `contact`
 --
 ALTER TABLE `contact`
-  ADD PRIMARY KEY (`message_id`),
-  ADD KEY `contact_user_fk` (`user_id`);
+  ADD PRIMARY KEY (`message_id`);
 
 --
 -- Indexes for table `inventory`
@@ -206,16 +214,10 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `cart`
---
-ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `inventory`
@@ -233,7 +235,7 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `seller`
@@ -255,13 +257,8 @@ ALTER TABLE `user`
 -- Constraints for table `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_productID_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
-
---
--- Constraints for table `contact`
---
-ALTER TABLE `contact`
-  ADD CONSTRAINT `contact_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `cart_productID_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
+  ADD CONSTRAINT `cart_userID_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `inventory`

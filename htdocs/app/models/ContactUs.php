@@ -29,4 +29,10 @@ class ContactUs extends \app\core\Model{
         return $STMT->fetch();
     }
 
+    public function delete(){
+        $SQL = "DELETE FROM contact WHERE message_id=:message_id";
+        $STMT = self::$_connection->prepare($SQL);
+        $STMT->execute(['message_id'=>$this->message_id]);
+    }
+
 }
