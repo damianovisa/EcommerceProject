@@ -8,7 +8,7 @@
 <nav class="navigation">
 
 		<div class="titleLogo">
-		<h1 class="title"><?=_("TechW0rld") ?></h1> <img class="logo" src="../../images/logo.png">
+		<h1 class="title"><a href="/Seller/home"><?=_("TechW0rld") ?></a></h1> <img class="logo" src="../../images/logo.png">
 		</div>
 
 		<div class="options">
@@ -80,9 +80,10 @@ if(isset($_GET['message'])){
 		font-family: 'Poppins', sans-serif;
 		margin: 0;
 		padding: 0;
-		background-color: #ffffff;
+		background-color: gray;
 	}
-	.title{
+	.title a{
+		text-decoration: none;
 		color: white;
 	}
 	.navigation{

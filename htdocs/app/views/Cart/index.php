@@ -8,7 +8,7 @@
 <nav class="navigation">
 
 		<div class="titleLogo">
-		<h1 class="title"><?=_("TechW0rld") ?></h1> <img class="logo" src="../../images/logo.png">
+		<h1 class="title"><a href="/User/home"><?=_("TechW0rld") ?></a></h1> <img class="logo" src="../../images/logo.png">
 		</div>
 
 		<div class="options">
@@ -33,20 +33,33 @@
 	</nav>
 
 
-<div class="container">
-    <div class="row">
-        <h1>Cart</h1>
+<?php
+if(isset($_GET['message'])){
+?>
+<div class="alert alert-success" role="alert">
+    <?=$_GET['message']?>
+</div>
+<?php
+}
+?>
 
+
+<div class="container">
+    <div class="row1">
+    	<center>
+        	<h1>Cart</h1>
+		</center>
     </div>
     <div class="row">
         <?php foreach ($data as $item){?>
         <div class="colBox">
             <div class="card" >
                 <div>
-                    <h4 class="card-title"><?php echo $item->product_name;?></h4>
-                    <p class="card-text"><?php echo $item->product_manufacture;?></p>
-					<p class="card-text">$<?php echo $item->product_price;?></p>
-					<!-- <a type="submit" class="remove" href='/Cart/delete/<?= $item->product_id?>'>Remove</a> -->
+                	<hr>
+	                <h4 class="card-title"><?php echo $item->product_name;?></h4>
+	                <p class="card-text">by <?php echo $item->product_manufacture;?></p>
+					<p style="color: white;" class="card-text" class="price">$<?php echo $item->product_price;?></p>
+					<a type="submit" class="remove" href='/Cart/delete/<?= $item->cart_id?>'>Remove</a>
                 </div>
             </div>
         </div>
@@ -58,55 +71,62 @@
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+	::-webkit-scrollbar{
+		display: none;
+	}
+	.price{
+		color: white;
+		float: right;
+	}
+
+	.title a{
+		color: white;
+		text-decoration: none;
+	}
+
 	.logOutBtn{
 		background-color: #b23b3b;
 	}
-	.row h1{
+	.row1 h1{
 		color: black;
+		font-size: 35px;
 	}
 	.row{
-		display: flex;
-		flex-wrap: wrap;
+		display: block;
 		margin: 0 auto;
-		width: 90%;
-		justify-content: space-evenly;
+		width: 100%;
 	}
 	.colBox{
-		border-radius: 15px;
-		font-size: 22px;
-		color: white;
-		text-align: center;
-		background-color: #332d2d;
-		box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
-		padding: 15px;
-		margin: 20px 10px;
-		width: 300px;	
-	}
-	.card div{
-		text-align: center;
-	}
-	.card p{
-		color: rgba(190, 190, 190, 1);
-	}
-	.addToCart{
-		margin: 10px auto;
 		border-radius: 5px;
-		padding: 10px 15px;
-		border: none;
-		background-color: #5cdb5c;
-		color: black;
-		transition: 0.3s;
+		font-size: 22px;
+		padding: 15px;
+		margin: 20px auto;
+		width: 90%;	
 	}
-	.addToCart:hover{
-		opacity: 0.7;
-		transition: 0.3s;
+	hr{
+		border-color: black;
+		margin: 0;
 	}
 
+	.remove{
+		font-size: 15px;
+		text-decoration: none;
+		margin: 10px auto;
+		border-radius: 5px;
+		border: none;
+		color: black;
+		transition: 0.3s;
+		float: right;
+	}
+	.remove:hover{
+		text-decoration: underline;
+		transition: 0.3s;
+	}
 	body{
 		font-family: 'Poppins', sans-serif;
 		margin: 0;
 		padding: 0;
-		background-color: #ffffff;
+		background-color: gray;
 	}
 	h1{
 		color: white;
@@ -189,6 +209,15 @@
 	.dropdown:hover .dropdown-content {
 	  display: block;
 	}
+    .alert-success{
+        background-color: #d1e7dd;
+        text-align: center;
+        width: 30%;
+        margin: 0 auto;
+        border-radius:5px;
+        padding: 15px;
+        color: black;
+    }
 </style>
 
 </body>

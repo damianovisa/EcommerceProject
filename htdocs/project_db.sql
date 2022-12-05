@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2022 at 09:47 PM
+-- Generation Time: Dec 05, 2022 at 03:53 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -30,9 +30,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `product_price` double(20,0) NOT NULL
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `product_id`, `user_id`) VALUES
+(9, 5, 11),
+(10, 7, 11),
+(12, 6, 11),
+(14, 9, 10),
+(16, 9, 11),
+(18, 3, 11),
+(20, 2, 11);
 
 -- --------------------------------------------------------
 
@@ -53,8 +65,7 @@ CREATE TABLE `contact` (
 
 INSERT INTO `contact` (`message_id`, `user_id`, `username`, `message`) VALUES
 (2, 10, 'Tester', 'Hi i wanted to know if the ...... product would ever be published, if so I would like to know when.'),
-(3, 11, 'Dam', 'Hi i wanted to know if there will ever be any PS5 related products like controllers or headset, currently in need of a controller, if so I would like to know when. \r\n\r\nThank you'),
-(4, 11, 'Dam', 'Wassup my man');
+(3, 11, 'Dam', 'Hi i wanted to know if there will ever be any PS5 related products like controllers or headset, currently in need of a controller, if so I would like to know when. \r\n\r\nThank you');
 
 -- --------------------------------------------------------
 
@@ -93,7 +104,7 @@ CREATE TABLE `product` (
   `Seller_id` int(11) NOT NULL,
   `product_name` varchar(50) NOT NULL,
   `product_manufacture` varchar(50) NOT NULL,
-  `product_price` int(5) NOT NULL,
+  `product_price` double(20,2) NOT NULL,
   `product_image` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -102,12 +113,13 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `Seller_id`, `product_name`, `product_manufacture`, `product_price`, `product_image`) VALUES
-(2, 3, 'RTX 3090', 'Nvidia', 4000, ''),
-(3, 3, 'RTX 4090', 'Nvidia', 5000, ''),
-(4, 1, 'Mouse', 'Razer', 80, ''),
-(5, 3, 'Chair', 'SecretLab', 450, ''),
-(6, 1, 'Headset', 'Turtle Beach', 180, ''),
-(7, 1, 'KeyBoard', 'Logitech', 100, '');
+(2, 3, 'RTX 3090', 'Nvidia', 4000.00, ''),
+(3, 3, 'RTX 4090', 'Nvidia', 5000.00, ''),
+(4, 1, 'Mouse', 'Razer', 80.00, ''),
+(5, 3, 'Chair', 'SecretLab', 450.00, ''),
+(6, 1, 'Headset', 'Turtle Beach', 180.00, ''),
+(7, 1, 'KeyBoard', 'Logitech', 100.00, ''),
+(9, 1, 'LG 32QN600 32 Inch QHD IPS HDR10 Monitor with AMD ', 'LG', 325.73, '');
 
 -- --------------------------------------------------------
 
@@ -214,6 +226,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
@@ -235,7 +253,7 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `seller`

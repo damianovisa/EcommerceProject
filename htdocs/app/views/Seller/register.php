@@ -40,6 +40,7 @@ if(isset($_GET['error'])){
 		font-family: 'Poppins', sans-serif;
 		margin: 0;
 		padding: 0;
+		background-color: gray;
 	}
 
 	.container{

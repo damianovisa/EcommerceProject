@@ -13,7 +13,9 @@
 <nav class="navigation">
 
         <div class="titleLogo">
-        <h1 class="title"><?=_("TechW0rld") ?></h1> <img class="logo" src="../../images/logo.png">
+        <h1 class="title"><a href="/Seller/home"><?=_("TechW0rld") ?>
+        
+    </a></h1> <img class="logo" src="../../images/logo.png">
         </div>
 
         <div class="options">
@@ -66,9 +68,11 @@ if(isset($_GET['message'])){
         <div class="colBox">
             <div class="card" >
                 <div>
+                    <hr>
                     <h4 class="card-title">User: <?php echo $item->username;?></h4>
                     <p class="card-text"><?php echo $item->message;?></p>
                     <a type="submit" class="delete" href='/ContactUs/delete/<?= $item->message_id?>'>delete</a>
+                    
                 </div>
             </div>
         </div>
@@ -79,6 +83,11 @@ if(isset($_GET['message'])){
 
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    .title a{
+        color: white;
+        text-decoration: none;
+    }
 
     .logOutBtn{
         background-color: #b23b3b;
@@ -95,32 +104,32 @@ if(isset($_GET['message'])){
         justify-content: space-evenly;
     }
     .colBox{
-        border-radius: 15px;
+        border-radius: 5px;
         font-size: 22px;
-        color: white;
-        text-align: center;
-        background-color: #332d2d;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
         padding: 15px;
-        margin: 20px 10px;
-        width: 450px;   
+        margin: 0px auto;
+        width: 90%; 
+    }
+    hr{
+        border-color: black;
+        margin: 0;
     }
     .card p{
         color: rgba(190, 190, 190, 1);
     }
     .delete{
+        float: right;
         font-size: 15px;
         text-decoration: none;
         margin: 10px auto;
         border-radius: 5px;
         padding: 5px 10px;
         border: none;
-        background-color: #ED4337;
         color: black;
         transition: 0.3s;
     }
     .delete:hover{
-        opacity: 0.7;
+        text-decoration: underline;
         transition: 0.3s;
     }
 
@@ -129,7 +138,7 @@ if(isset($_GET['message'])){
         font-family: 'Poppins', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #ffffff;
+        background-color: gray;
     }
     h1{
         color: white;
