@@ -72,7 +72,8 @@ if(isset($_GET['message'])){
 		margin: auto;
 		transform: translate(-50%,-50%);
 	}
-	form input{ 
+	form input{
+		font-family: 'Poppins', sans-serif; 
 		display: flex;
 		margin: 10px auto;
 		width: 90%;

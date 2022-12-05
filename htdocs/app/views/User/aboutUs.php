@@ -1,72 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><?=_("Add Product")?></title>
+	<title><?=_("About Us")?></title>
 </head>
 <body>
 
 <nav class="navigation">
 
-        <div class="titleLogo">
-        <h1 class="title"><a href="/User/home"><?=_("TechW0rld") ?></a></h1> <img class="logo" src="../../images/logo.png">
-        </div>
+		<div class="titleLogo">
+		<h1 class="title"><?=_("TechW0rld") ?></h1> <img class="logo" src="../../images/logo.png">
+		</div>
 
-        <div class="options">
-            <ul>
-                <li class="dashboard"><?=_("Contact Us") ?></li>
-                <li>
-                    <div class="dropdown">
-                            <button class="dropbtn"><?= $_SESSION['username']?> 
-                              <i class="fa fa-caret-down"></i>
-                            </button>
-                        <div class="dropdown-content">
-                            <a href="/Cart/index"><?=_("Cart") ?></a>
-                          <a href="/User/home"><?=_("Products") ?></a>
-                          <a href="/User/aboutUs"><?=_("About Us") ?></a>
-                          <a class="logOutBtn" href="/User/logout"><?=_("Log out") ?></a>
-                        </div>
-                      </div> 
-                </li>
-            </ul>
-        </div>
-    </nav>
+		<div class="options">
+			<ul>
+				<li class="dashboard"><?=_("Your cart") ?></li>
+				<li> 
+					<div class="navbar">
+					  	<div class="dropdown">
+						    <button class="dropbtn"><?= $_SESSION['username'] ?> 
+						      <i class="fa fa-caret-down"></i>
+						    </button>
+					    <div class="dropdown-content">
+					    	<a href="/User/home"><?=_("Products") ?></a>
+					    	<a href="/Cart/index"><?=_("Cart") ?></a>
+					    	<a href="/ContactUs/index"><?=_("Contact us") ?></a>
+					    	<a href="/User/UpdateUser"><?=_("Edit Profile") ?></a>
+					      <a class="logOutBtn" href="logout"><?=_("Log out") ?></a>
+					    </div>
+					  </div> 
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
+    <p>About Us</p>
 
-
-<?php
-if(isset($_GET['error'])){
-?>
-<div class="alert alert-danger" role="alert">
-    <?=$_GET['error']?>
-</div>
-<?php
-}
-?>
-
-<?php
-if(isset($_GET['message'])){
-?>
-<div class="alert alert-success" role="alert">
-    <?=$_GET['message']?>
-</div>
-<?php
-}
-?>
-    
-
-
-<div class="contactUsDiv">
-            
-            <form action="" method="post">
-                <h2 class="contactUs"><?=_("Contact Us")?></h2> 
-                <textarea type="text" name="message" class="message" rows="12" required></textarea>
-                <input type="submit" name="action" class="send" value="Send">
-            </form>
-</div>
-
-
-
-        
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
     
@@ -160,6 +129,7 @@ if(isset($_GET['message'])){
     }
     .message{
         width: 100%;
+        height: 200px;
         outline: none;
         padding: 10px;
         color: white;
@@ -270,4 +240,5 @@ if(isset($_GET['message'])){
 </style>
 
 </body>
+
 </html>

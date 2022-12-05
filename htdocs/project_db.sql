@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2022 at 03:53 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Dec 05, 2022 at 06:04 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,19 +33,6 @@ CREATE TABLE `cart` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cart_id`, `product_id`, `user_id`) VALUES
-(9, 5, 11),
-(10, 7, 11),
-(12, 6, 11),
-(14, 9, 10),
-(16, 9, 11),
-(18, 3, 11),
-(20, 2, 11);
-
 -- --------------------------------------------------------
 
 --
@@ -64,7 +51,6 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`message_id`, `user_id`, `username`, `message`) VALUES
-(2, 10, 'Tester', 'Hi i wanted to know if the ...... product would ever be published, if so I would like to know when.'),
 (3, 11, 'Dam', 'Hi i wanted to know if there will ever be any PS5 related products like controllers or headset, currently in need of a controller, if so I would like to know when. \r\n\r\nThank you');
 
 -- --------------------------------------------------------
@@ -113,13 +99,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `Seller_id`, `product_name`, `product_manufacture`, `product_price`, `product_image`) VALUES
-(2, 3, 'RTX 3090', 'Nvidia', 4000.00, ''),
-(3, 3, 'RTX 4090', 'Nvidia', 5000.00, ''),
-(4, 1, 'Mouse', 'Razer', 80.00, ''),
-(5, 3, 'Chair', 'SecretLab', 450.00, ''),
-(6, 1, 'Headset', 'Turtle Beach', 180.00, ''),
-(7, 1, 'KeyBoard', 'Logitech', 100.00, ''),
-(9, 1, 'LG 32QN600 32 Inch QHD IPS HDR10 Monitor with AMD ', 'LG', 325.73, '');
+(12, 3, 'Mouse', 'Logitech', 99.99, 'mouse.png'),
+(13, 3, 'Keyboard', 'Logitech', 121.99, 'keyboard.png'),
+(14, 3, 'Ps5 Headset', 'Sony', 99.99, 'ps5Headset.png');
 
 -- --------------------------------------------------------
 
@@ -165,9 +147,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `fname`, `lname`, `username`, `address`, `password_hash`) VALUES
-(10, 'Test', 'T', 'Tester', '', '$2y$10$HzYM7ENugBnw0triFUD/2.hdTfrALOAIXG.XyPcNJoico5OqpsQ6.'),
-(11, 'Damiano', 'Visalli', 'Dam', '', '$2y$10$3BXWullbiZIu2nShacPAzOYJdBOitREQd2MWZP8Sw11SPAaCq6yDq'),
-(12, 'Bob', 'Bob', 'Bobby', '', '$2y$10$TOvN1dBSWkFHfu3Fm96jy.AKGyYNL8i44l9R1JXpYKslvWJ4QJNve');
+(12, 'Tester', 'Ronaldo', 'CR7', '', '$2y$10$1f7QjYXN64OfLsduoC2VpuPOljvQcE2coRtelmPtupucj46fFvOmy'),
+(13, 'Damiano', 'Visalli', 'Dam', '', '$2y$10$5LEkP5Na14TOBQJ1AjzBQOOg6WTGqpQPsegNZx5xbfngZXFT7i2ra');
 
 --
 -- Indexes for dumped tables
@@ -229,13 +210,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `inventory`
@@ -253,7 +234,7 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `seller`
@@ -265,7 +246,7 @@ ALTER TABLE `seller`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -275,8 +256,8 @@ ALTER TABLE `user`
 -- Constraints for table `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_productID_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
-  ADD CONSTRAINT `cart_userID_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `cart_productID_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `cart_userID_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `inventory`
@@ -295,7 +276,7 @@ ALTER TABLE `order`
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `seller_id_fk` FOREIGN KEY (`Seller_id`) REFERENCES `seller` (`Seller_id`);
+  ADD CONSTRAINT `seller_id_fk` FOREIGN KEY (`Seller_id`) REFERENCES `seller` (`Seller_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

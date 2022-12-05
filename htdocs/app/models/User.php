@@ -16,5 +16,10 @@ class User extends \app\core\Model{
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['username'=>$this->username,'password_hash'=>$this->password_hash,'fname'=>$this->fname,'lname'=>$this->lname]);
 	}
+	public function updateUser(){
+		$SQL = "UPDATE user SET username=:username, password_hash=:password_hash,fname=:fname,lname=:lname WHERE username=:username" ;
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['username'=>$this->username,'password_hash'=>$this->password_hash,'fname'=>$this->fname,'lname'=>$this->lname]);
+	}
 
 }

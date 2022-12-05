@@ -10,8 +10,6 @@ class Cart extends \app\core\Model{
        $STMT->execute(['product_id' => $this->product_id,'user_id' => $this->user_id]);
     } 
 
-   
-
     public function getCartbyUserID($user_id)
     {
 

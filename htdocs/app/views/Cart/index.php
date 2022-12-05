@@ -23,6 +23,7 @@
 					    <div class="dropdown-content">
 					    	<a href="/User/home"><?=_("Products") ?></a>
 					    	<a href="/ContactUs/index"><?=_("Contact Us") ?></a>
+                         <a href="/User/aboutUs"><?=_("About Us") ?></a>
 					      <a class="logOutBtn" href="logout"><?=_("Log out") ?></a>
 					    </div>
 					  </div> 
@@ -57,6 +58,7 @@ if(isset($_GET['message'])){
                 <div>
                 	<hr>
 	                <h4 class="card-title"><?php echo $item->product_name;?></h4>
+	                <img class="productImg" src="../images/<?php echo $item->product_image;?>">
 	                <p class="card-text">by <?php echo $item->product_manufacture;?></p>
 					<p style="color: white;" class="card-text" class="price">$<?php echo $item->product_price;?></p>
 					<a type="submit" class="remove" href='/Cart/delete/<?= $item->cart_id?>'>Remove</a>
@@ -70,6 +72,11 @@ if(isset($_GET['message'])){
 
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+	.productImg{
+		width: 200px;
+		height: 150px;
+	}
 
 	::-webkit-scrollbar{
 		display: none;
