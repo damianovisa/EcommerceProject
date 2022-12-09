@@ -11,8 +11,8 @@ class Wishlist extends \app\core\Controller{
 
 
 
-	public function delete($cart_id){
-		$wishlist = new \app\models\Cart();
+	public function delete($wishlist_id){
+		$wishlist = new \app\models\Wishlist();
 		$wishlists = $wishlist->delete($wishlist_id, $_SESSION['user_id']);
 		header('location:/Wishlist/index?message=Deleted from wishlist');
 	}

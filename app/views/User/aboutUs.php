@@ -24,6 +24,7 @@
 					    	<a href="/User/home"><?=_("Products") ?></a>
 					    	<a href="/Cart/index"><?=_("Cart") ?></a>
 					    	<a href="/ContactUs/index"><?=_("Contact us") ?></a>
+                <a href="/Wishlist/index"><?=_("Wishlist") ?></a>
 					    	<a href="/User/UpdateUser"><?=_("Edit Profile") ?></a>
 					      <a class="logOutBtn" href="logout"><?=_("Log out") ?></a>
 					    </div>

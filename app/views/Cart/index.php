@@ -5,6 +5,11 @@
 </head>
 <body>
 
+<?php 
+$product = new \app\models\Product();
+$total = 0;
+?>
+
 <nav class="navigation">
 
 		<div class="titleLogo">
@@ -67,7 +72,9 @@ if(isset($_GET['message'])){
                 </div>
             </div>
         </div>
+
         <?php }?>
+
     </div>
 </div>
 
@@ -111,6 +118,9 @@ if(isset($_GET['message'])){
 		padding: 15px;
 		margin: 20px auto;
 		width: 90%;	
+	}
+	.productImg{
+		width: 300px;
 	}
 	hr{
 		border-color: black;

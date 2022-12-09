@@ -5,9 +5,9 @@ class Wishlist extends \app\core\Model{
 
 	public function insertProductToWishlist()
     {
-        $SQL = "INSERT INTO wishlist (product_id)VALUES(:product_id)";
+        $SQL = "INSERT INTO wishlist (product_id,user_id)VALUES(:product_id,:user_id)";
         $STMT = self::$_connection->prepare($SQL);
-        $STMT->execute(['product_id' => $this->product_id]);
+        $STMT->execute(['product_id' => $this->product_id, 'user_id' => $this->user_id]);
     } 
 
     public function getWishlistbyUserID($user_id)
@@ -21,9 +21,9 @@ class Wishlist extends \app\core\Model{
     }
 
     public function delete($wishlist_id, $user_id){
-		$SQL = "DELETE FROM wishlist WHERE wishlist_id=:cart_id AND user_id=:user_id";
+		$SQL = "DELETE FROM wishlist WHERE wishlist_id=:wishlist_id AND user_id=:user_id";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['cart_id'=>$cart_id, 'user_id'=>$user_id]);
+		$STMT->execute(['wishlist_id'=>$wishlist_id, 'user_id'=>$user_id]);
 	}
 
  

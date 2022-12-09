@@ -64,6 +64,7 @@ if(isset($_GET['message'])){
 	                <p class="card-text">by <?php echo $item->product_manufacture;?></p>
 					<p style="color: white;" class="card-text" class="price">$<?php echo $item->product_price;?></p>
 					<a type="submit" class="remove" href='/Wishlist/delete/<?= $item->wishlist_id?>'>Remove</a>
+					<a type="submit" class="addToCart" href='/Cart/addToCart/<?= $item->product_id?>'>Add To Cart</a>
                 </div>
             </div>
         </div>
@@ -126,6 +127,20 @@ if(isset($_GET['message'])){
 		color: black;
 		transition: 0.3s;
 		float: right;
+	}
+	.addToCart{
+		font-size: 15px;
+		text-decoration: none;
+		margin: 10px auto;
+		border-radius: 5px;
+		border: none;
+		color: black;
+		transition: 0.3s;
+		
+	}
+	.addToCart:hover{
+		text-decoration: underline;
+		transition: 0.3s;
 	}
 	.remove:hover{
 		text-decoration: underline;

@@ -21,8 +21,11 @@
                             </button>
                         <div class="dropdown-content">
                             <a href="/Cart/index"><?=_("Cart") ?></a>
-                          <a href="/User/home"><?=_("Products") ?></a>
-                          <a href="/User/aboutUs"><?=_("About Us") ?></a>
+                            <a href="/User/home"><?=_("Products") ?></a>
+                            <a href="/User/aboutUs"><?=_("About Us") ?></a>
+                            <a href="/Wishlist/index"><?=_("Wishlist") ?></a>
+                            <a href="/User/UpdateUser"><?=_("Edit Profile") ?></a>
+
                           <a class="logOutBtn" href="/User/logout"><?=_("Log out") ?></a>
                         </div>
                       </div> 

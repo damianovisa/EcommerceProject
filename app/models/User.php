@@ -12,9 +12,9 @@ class User extends \app\core\Model{
 	}
 
 	public function insertUser(){
-		$SQL = "INSERT INTO user(username, password_hash,fname,lname) VALUES (:username, :password_hash,:fname,:lname)";
+		$SQL = "INSERT INTO user(username, password_hash,address,fname,lname) VALUES (:username, :password_hash,:address,:fname,:lname)";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['username'=>$this->username,'password_hash'=>$this->password_hash,'fname'=>$this->fname,'lname'=>$this->lname]);
+		$STMT->execute(['username'=>$this->username,'password_hash'=>$this->password_hash,'address'=>$this->address,'fname'=>$this->fname,'lname'=>$this->lname]);
 	}
 	public function updateUser(){
 		$SQL = "UPDATE user SET username=:username, password_hash=:password_hash,fname=:fname,lname=:lname WHERE username=:username" ;

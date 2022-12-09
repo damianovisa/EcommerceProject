@@ -51,6 +51,7 @@ class User extends \app\core\Controller{
 				if(!$nameIsUsed){
 					$user->username = $_POST['username'];
 					$user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+					$user->address = $_POST['address'];
 					$user->fname = $_POST['fname'];
 					$user->lname = $_POST['lname'];
 					$user->insertUser();

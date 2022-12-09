@@ -24,6 +24,7 @@ if(isset($_GET['error'])){
 			<input placeholder="First name" type="text" name="fname" required>
 			<input placeholder="Last name" type="text" name="lname" required>
 			<input placeholder="Username" type="text" name="username" required>
+			<input placeholder="Address" type="text" name="address" required>
 			<input placeholder="Password" type="password" name="password" required>	
 			<input placeholder="Confirm password" type="password" name="password_conf" required>
 			<a class="login" href="index"><?=_("Have an account?")?></a>
