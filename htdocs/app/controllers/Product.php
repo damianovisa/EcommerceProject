@@ -15,7 +15,7 @@ class Product extends \app\core\Controller{
 			$product->product_name = $_POST['product_name'];
 			$product->product_manufacture = $_POST['product_manufacture'];
 			$product->product_price = $_POST['product_price'];
-			$product->product_image = $_POST['product_image'];
+			$product->product_image =$_POST['product_image'];
 			$_SESSION['product_id'] = $product->product_id;
 			$product->insertProduct();
 			header('location:/Product/addProduct?message=Product Added');

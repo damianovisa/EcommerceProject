@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?=_("Home")?></title>
+	<title><?=_("Wishlist")?></title>
 </head>
 <body>
 
@@ -13,7 +13,7 @@
 
 		<div class="options">
 			<ul>
-				<li class="dashboard"><?=_("Your cart") ?></li>
+				<li class="dashboard"><?=_("Your wishlist") ?></li>
 				<li> 
 					<div class="navbar">
 					  	<div class="dropdown">
@@ -24,7 +24,7 @@
 					    	<a href="/User/home"><?=_("Products") ?></a>
 					    	<a href="/ContactUs/index"><?=_("Contact Us") ?></a>
                          	<a href="/User/aboutUs"><?=_("About Us") ?></a>
-                         	<a href="/Wishlist/index"><?=_("Wishlist") ?></a>
+                         	<a href="/Cart/index"><?=_("Cart") ?></a>
                          	<a href="/User/UpdateUser"><?=_("Edit Profile") ?></a>
 					      <a class="logOutBtn" href="logout"><?=_("Log out") ?></a>
 					    </div>
@@ -50,7 +50,7 @@ if(isset($_GET['message'])){
 <div class="container">
     <div class="row1">
     	<center>
-        	<h1>Cart</h1>
+        	<h1>Wishlist</h1>
 		</center>
     </div>
     <div class="row">
@@ -63,7 +63,8 @@ if(isset($_GET['message'])){
 	                <img class="productImg" src="../images/<?php echo $item->product_image;?>">
 	                <p class="card-text">by <?php echo $item->product_manufacture;?></p>
 					<p style="color: white;" class="card-text" class="price">$<?php echo $item->product_price;?></p>
-					<a type="submit" class="remove" href='/Cart/delete/<?= $item->cart_id?>'>Remove</a>
+					<a type="submit" class="remove" href='/Wishlist/delete/<?= $item->wishlist_id?>'>Remove</a>
+					<a type="submit" class="addToCart" href='/Cart/addToCart/<?= $item->product_id?>'>Add To Cart</a>
                 </div>
             </div>
         </div>
@@ -126,6 +127,20 @@ if(isset($_GET['message'])){
 		color: black;
 		transition: 0.3s;
 		float: right;
+	}
+	.addToCart{
+		font-size: 15px;
+		text-decoration: none;
+		margin: 10px auto;
+		border-radius: 5px;
+		border: none;
+		color: black;
+		transition: 0.3s;
+		
+	}
+	.addToCart:hover{
+		text-decoration: underline;
+		transition: 0.3s;
 	}
 	.remove:hover{
 		text-decoration: underline;

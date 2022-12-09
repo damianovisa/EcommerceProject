@@ -40,6 +40,7 @@ if(isset($_GET['error'])){
 		font-family: 'Poppins', sans-serif;
 		margin: 0;
 		padding: 0;
+		background-color: gray;
 	}
 
 	.container{
@@ -65,6 +66,7 @@ if(isset($_GET['error'])){
 		transform: translate(-50%,-50%);
 	}
 	form input{ 
+		font-family: 'Poppins', sans-serif;
 		display: flex;
 		margin: 10px auto;
 		width: 90%;

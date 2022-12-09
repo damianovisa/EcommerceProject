@@ -8,7 +8,7 @@
 <nav class="navigation">
 
         <div class="titleLogo">
-        <h1 class="title"><?=_("TechW0rld") ?></h1> <img class="logo" src="../../images/logo.png">
+        <h1 class="title"><a href="/User/home"><?=_("TechW0rld") ?></a></h1> <img class="logo" src="../../images/logo.png">
         </div>
 
         <div class="options">
@@ -21,7 +21,11 @@
                             </button>
                         <div class="dropdown-content">
                             <a href="/Cart/index"><?=_("Cart") ?></a>
-                          <a href="/User/home"><?=_("Products") ?></a>
+                            <a href="/User/home"><?=_("Products") ?></a>
+                         	<a href="/User/aboutUs"><?=_("About Us") ?></a>
+                         	<a href="/Wishlist/index"><?=_("Wishlist") ?></a>
+                         	<a href="/User/UpdateUser"><?=_("Edit Profile") ?></a>
+
                           <a class="logOutBtn" href="/User/logout"><?=_("Log out") ?></a>
                         </div>
                       </div> 
@@ -58,7 +62,7 @@ if(isset($_GET['message'])){
             
             <form action="" method="post">
                 <h2 class="contactUs"><?=_("Contact Us")?></h2> 
-                <textarea type="text" name="message" class="message" required></textarea>
+                <textarea type="text" name="message" class="message" rows="12" required></textarea>
                 <input type="submit" name="action" class="send" value="Send">
             </form>
 </div>
@@ -73,11 +77,19 @@ if(isset($_GET['message'])){
         background-color: #b23b3b;
     }
 
+    textarea{
+        font-size: 18px;
+        font-family: 'Poppins', sans-serif;
+    }
+    .title a{
+        text-decoration: none;
+        color: white;
+    }
     body{
         font-family: 'Poppins', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #ffffff;
+        background-color: gray;
     }
     .title{
         color: white;
@@ -135,6 +147,7 @@ if(isset($_GET['message'])){
 
     }
     form input{ 
+        font-family: 'Poppins', sans-serif;
         display: flex;
         margin: 25px auto;
         width: 100%;
@@ -150,7 +163,6 @@ if(isset($_GET['message'])){
     }
     .message{
         width: 100%;
-        height: 200px;
         outline: none;
         padding: 10px;
         color: white;
@@ -165,7 +177,7 @@ if(isset($_GET['message'])){
     .send{
         margin: 10px auto;
         border-radius: 5px;
-        padding: 10px 15px;
+        /*padding: 10px 15px;*/
         border: none;
         background-color: #5cdb5c;
         color: black;

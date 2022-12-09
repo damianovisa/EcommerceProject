@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?=_("Home")?></title>
+	<title><?=_("User Update profile")?></title>
 </head>
 <body>
 
@@ -21,11 +21,11 @@
 						      <i class="fa fa-caret-down"></i>
 						    </button>
 					    <div class="dropdown-content">
+					    	<a href="/User/home"><?=_("Products") ?></a>
 					    	<a href="/Cart/index"><?=_("Cart") ?></a>
-					    	<a href="/Wishlist/index"><?=_("Wishlist") ?></a>
 					    	<a href="/ContactUs/index"><?=_("Contact Us") ?></a>
 					    	<a href="/User/aboutUs"><?=_("About Us") ?></a>
-					    	<a href="/User/UpdateUser"><?=_("Edit Profile") ?></a>
+							<a href="/Wishlist/index"><?=_("Wishlist") ?></a>
 					      <a href="logout" class="logOutBtn"><?=_("Log out") ?></a>
 					    </div>
 					  </div> 
@@ -34,7 +34,6 @@
 			</ul>
 		</div>
 	</nav>
-
 
 <?php
 if(isset($_GET['error'])){
@@ -46,141 +45,27 @@ if(isset($_GET['error'])){
 }
 ?>
 
-<?php
-if(isset($_GET['message'])){
-?>
-<div class="alert alert-success" role="alert">
-	<?=$_GET['message']?>
-</div>
-<?php
-}
-?>
+	<div class="container">
+		<form action="" method="post">
+			<h2><?=_("Update")?></h2>
 
+			<input placeholder="First name" type="text" name="fname" required>
+			<input placeholder="Last name" type="text" name="lname" required>
+			<input placeholder="Username" type="text" name="username" required>
+			<input placeholder="Password" type="password" name="password" required>	
+			<input placeholder="Confirm password" type="password" name="password_conf" required>
+			<input class="register" type="submit" name="action" value="Update">
 
-<div class="container">
-    <div class="row">
-        <h1><?=_("Products")?></h1>
-
-    </div>
-    <div class="row">
-        <?php foreach ($data as $item){?>
-        <div class="colBox">
-            <div class="card" >
-                <div>
-                    <h4 class="card-title" name="product_name"><?php echo $item->product_name;?></h4>
-                    <img class="productImg" src="../images/<?php echo $item->product_image;?>">
-                    <p class="card-text" name="product_manufacture">by <?php echo $item->product_manufacture;?></p>
-					<p class="card-text" name="product_price">$<?php echo $item->product_price;?></p>
-					
-		</br>
-		
-					<a type="submit" name="add" class="addToWishlist" href='/Wishlist/addToWishlist/<?= $item->product_id?>'><?=_("Add to wishlist") ?></a>
-					<a type="submit" name="add" class="addToCart" href='/Cart/addToCart/<?= $item->product_id?>'><?=_("Add to cart") ?></a>
-					<a type="submit" name="add" class="reviews" href='/Cart/reviews/<?= $item->product_id?>'><?=_("Reviews") ?></a>
-					
-					
-                </div>
-            </div>
-        </div>
-        <?php }?>
-    </div>
-</div>
-
+		</form>
+	</div>
+</body>
 
 <style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 	
-	::-webkit-scrollbar{
-		display: none;
-	}
-
-	.productImg{
-		width: 70%;
-		height: 150px;
-	}
-
-	.title a{
-		color: white;
-		text-decoration: none;
-	}
-
 	.logOutBtn{
-		background-color: #b23b3b;
-	}
-
-	.row h1{
-		color: black;
-	}
-	.row{
-		display: flex;
-		flex-wrap: wrap;
-		margin: 0 auto;
-		width: 90%;
-		justify-content: space-evenly;
-	}
-	.colBox{
-		border-radius: 15px;
-		font-size: 22px;
-		color: white;
-		text-align: center;
-		background-color: #332d2d;
-		box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
-		padding: 15px;
-		margin: 20px 10px;
-		width: 350px;	
-	}
-	.card div{
-		text-align: center;
-	}
-	.card p{
-		color: rgba(190, 190, 190, 1);
-	}
-	.addToCart{
-		font-size: 15px;
-		text-decoration: none;
-		margin: 10px auto;
-		border-radius: 5px;
-		padding: 5px 10px;
-		border: none;
-		background-color: #5cdb5c;
-		color: black;
-		transition: 0.3s;
-	}
-	.addToCart:hover{
-		opacity: 0.7;
-		transition: 0.3s;
-	}
-	.addToWishlist{
-		font-size: 15px;
-		text-decoration: none;
-		margin: 10px auto;
-		border-radius: 5px;
-		padding: 5px 10px;
-		border: none;
-		background-color: #6888B4;
-		color: black;
-		transition: 0.3s;
-	}
-	.addToWishlist:hover{
-		opacity: 0.7;
-		transition: 0.3s;
-	}
-	.reviews{
-		font-size: 15px;
-		text-decoration: none;
-		margin: 10px auto;
-		border-radius: 5px;
-		padding: 5px 10px;
-		border: none;
-		background-color: #FDCC0D;
-		color: black;
-		transition: 0.3s;
-	}
-	.reviews:hover{
-		opacity: 0.7;
-		transition: 0.3s;
-	}
-
+        background-color: #b23b3b;
+    }
 
 	body{
 		font-family: 'Poppins', sans-serif;
@@ -188,7 +73,79 @@ if(isset($_GET['message'])){
 		padding: 0;
 		background-color: gray;
 	}
-	h1{
+
+	.container{
+		display: flex;
+		position: absolute;
+		padding: 5px;
+		top: 50%;
+		left: 50%;
+		height: 500px;
+		width: 20%;
+		transform: translate(-50%,-50%);
+		background-color: #332d2d;
+		text-align: center;
+		border-radius: 10px;
+	}
+	form{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 90%;
+		height: 90%;
+		margin: auto;
+		transform: translate(-50%,-50%);
+	}
+	form input{
+		font-family: 'Poppins', sans-serif; 
+		display: flex;
+		margin: 10px auto;
+		width: 90%;
+		height: 35px;
+		border-radius: 5px;
+		outline: none;
+		border:white solid 2px;
+		padding: 2px 10px;
+		background-color: transparent;
+		color: white;
+		transition: 0.3s;
+	}
+	.title a{
+		color: white;
+		text-decoration: none;
+	}
+	h2{
+		color: white;
+	}
+	.register{
+		padding: 0 auto;
+		width: 50%;
+		transition: 0.3s;
+	}
+	::placeholder{
+		color: white;
+	}
+	.register:hover{
+		color: black;
+		background-color:white ;
+		transition: 0.3s;
+	}
+	.login{
+		text-decoration: none;
+		color: #FFFFFF80;
+		font-size: 13px;
+	}
+	form input:focus{
+		transition: 0.3s;
+		border: solid 2px black;
+	}
+	.alert-danger{
+		background-color: #dc3545;
+		text-align: center;
+		width: 30%;
+		margin: 0 auto;
+		border-radius:5px;
+		padding: 15px;
 		color: white;
 	}
 	.navigation{
@@ -289,10 +246,6 @@ if(isset($_GET['message'])){
 		color: black;
 	}
 
-
-
-
-
 </style>
-</body>
+
 </html>

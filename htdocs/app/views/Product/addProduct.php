@@ -8,7 +8,7 @@
 <nav class="navigation">
 
 		<div class="titleLogo">
-		<h1 class="title"><?=_("TechW0rld") ?></h1> <img class="logo" src="../../images/logo.png">
+		<h1 class="title"><a href="/Seller/home"><?=_("TechW0rld") ?></a></h1> <img class="logo" src="../../images/logo.png">
 		</div>
 
 		<div class="options">
@@ -61,7 +61,7 @@ if(isset($_GET['message'])){
 				<input type="text" name="product_name" placeholder="Product name" required>
 				<input type="text" name="product_manufacture" placeholder="Manufacturer" required>
 				<input type="text" name="product_price" placeholder="Price" required>
-				<!-- <input type="file" name="product_image" required> -->
+				<input type="file" name="product_image" required>
 				<input type="submit" name="action" class="add" value="Add">
 			</form>
 </div>
@@ -72,6 +72,7 @@ if(isset($_GET['message'])){
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+
 	.logOutBtn{
 		background-color: #b23b3b;
 	}
@@ -80,9 +81,10 @@ if(isset($_GET['message'])){
 		font-family: 'Poppins', sans-serif;
 		margin: 0;
 		padding: 0;
-		background-color: #ffffff;
+		background-color: gray;
 	}
-	.title{
+	.title a{
+		text-decoration: none;
 		color: white;
 	}
 	.navigation{
@@ -137,7 +139,8 @@ if(isset($_GET['message'])){
 		margin: auto;
 
 	}
-	form input{ 
+	form input{
+		font-family: 'Poppins', sans-serif; 
 		display: flex;
 		margin: 25px auto;
 		width: 100%;
@@ -154,7 +157,7 @@ if(isset($_GET['message'])){
 	.add{
 		margin: 10px auto;
 		border-radius: 5px;
-		padding: 10px 15px;
+		/*padding: 10px 15px;*/
 		border: none;
 		background-color: #5cdb5c;
 		color: white;

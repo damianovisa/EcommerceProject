@@ -13,7 +13,7 @@
 <nav class="navigation">
 
 		<div class="titleLogo">
-		<h1 class="title"><?=_("TechW0rld") ?></h1> <img class="logo" src="../../images/logo.png">
+		<h1 class="title"><a href="home"><?=_("TechW0rld") ?></a></h1> <img class="logo" src="../../images/logo.png">
 		</div>
 
 		<div class="options">
@@ -67,7 +67,8 @@ if(isset($_GET['message'])){
             <div class="card" >
                 <div>
                     <h4 class="card-title"><?php echo $item->product_name;?></h4>
-                    <p class="card-text"><?php echo $item->product_manufacture;?></p>
+                    <img class="productImg" src="../images/<?php echo $item->product_image;?>">
+                    <p class="card-text"><?=_("by")?> <?php echo $item->product_manufacture;?></p>
 					<p class="card-text">$<?php echo $item->product_price;?></p>
 					<a type="submit" class="delete" href='/Product/delete/<?= $item->product_id?>'>delete</a>
                 </div>
@@ -80,6 +81,16 @@ if(isset($_GET['message'])){
 
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+	.productImg{
+		width: 70%;
+		height: 150px;
+	}
+
+	.title a{
+		color: white;
+		text-decoration: none;
+	}
 
 	.logOutBtn{
 		background-color: #b23b3b;
@@ -104,7 +115,7 @@ if(isset($_GET['message'])){
 		box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
 		padding: 15px;
 		margin: 20px 10px;
-		width: 300px;	
+		width: 350px;	
 	}
 	.card p{
 		color: rgba(190, 190, 190, 1);
@@ -130,7 +141,7 @@ if(isset($_GET['message'])){
 		font-family: 'Poppins', sans-serif;
 		margin: 0;
 		padding: 0;
-		background-color: #ffffff;
+		background-color: gray;
 	}
 	h1{
 		color: white;
@@ -243,6 +254,12 @@ if(isset($_GET['message'])){
 	}
 	.addProductDiv input{
 		display: flex;
+	}
+
+	@keyframes show{
+		from{
+			display: ;
+		}
 	}
 </style>
 
