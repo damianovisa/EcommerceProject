@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2022 at 11:55 PM
+-- Generation Time: Dec 09, 2022 at 04:12 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -33,13 +33,6 @@ CREATE TABLE `cart` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cart_id`, `product_id`, `user_id`) VALUES
-(24, 14, 13);
-
 -- --------------------------------------------------------
 
 --
@@ -52,13 +45,6 @@ CREATE TABLE `contact` (
   `username` varchar(50) NOT NULL,
   `message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `contact`
---
-
-INSERT INTO `contact` (`message_id`, `user_id`, `username`, `message`) VALUES
-(3, 11, 'Dam', 'Hi i wanted to know if there will ever be any PS5 related products like controllers or headset, currently in need of a controller, if so I would like to know when. \r\n\r\nThank you');
 
 -- --------------------------------------------------------
 
@@ -101,16 +87,6 @@ CREATE TABLE `product` (
   `product_image` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`product_id`, `Seller_id`, `product_name`, `product_manufacture`, `product_price`, `product_image`) VALUES
-(12, 3, 'Mouse', 'Logitech', 99.99, 'mouse.png'),
-(13, 3, 'Keyboard', 'Logitech', 121.99, 'keyboard.png'),
-(14, 3, 'Ps5 Headset', 'Sony', 99.99, 'ps5Headset.png'),
-(16, 1, 'Something', 'Someone', 14.99, 'logo.png');
-
 -- --------------------------------------------------------
 
 --
@@ -124,16 +100,6 @@ CREATE TABLE `seller` (
   `username` varchar(30) NOT NULL,
   `password_hash` varchar(72) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `seller`
---
-
-INSERT INTO `seller` (`Seller_id`, `fname`, `lname`, `username`, `password_hash`) VALUES
-(1, 'Sel', 'S', 'Seller', '$2y$10$1GERrFYVIgPEZGG0dUTREenJqUI54yIHSI.Pg0q71cm/1JmWWD5l.'),
-(2, 'AS', 'SA', 'ASS912', '$2y$10$jSQUCDeELu2MzaWx2fe0feGfLs2Lj3uqit.oJ5vkF3v1XlHSeTJM2'),
-(3, 'Dam', 'Visa', 'Dami', '$2y$10$S3PT2ei.WOLT9bU3OeVTcuUWt23UFfIBwHI.I9gbF5OEHmGjfhG2a'),
-(4, 'rob', 'can', 'robcan', '$2y$10$2DG2NGO4nhI.wozlMDagbenCcYZqpN61eABp6QjfswjE6K1ibfB6u');
 
 -- --------------------------------------------------------
 
@@ -149,14 +115,6 @@ CREATE TABLE `user` (
   `address` varchar(50) NOT NULL,
   `password_hash` varchar(72) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`user_id`, `fname`, `lname`, `username`, `address`, `password_hash`) VALUES
-(12, 'Tester', 'Ronaldo', 'CR7', '', '$2y$10$1f7QjYXN64OfLsduoC2VpuPOljvQcE2coRtelmPtupucj46fFvOmy'),
-(13, 'Damiano', 'Visalli', 'Dam', '', '$2y$10$5LEkP5Na14TOBQJ1AjzBQOOg6WTGqpQPsegNZx5xbfngZXFT7i2ra');
 
 -- --------------------------------------------------------
 
@@ -238,13 +196,13 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `inventory`
@@ -262,25 +220,25 @@ ALTER TABLE `order`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `seller`
 --
 ALTER TABLE `seller`
-  MODIFY `Seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Seller_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
