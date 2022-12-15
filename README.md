@@ -12,6 +12,8 @@ Group members: Amirreza Saeidi, Yassine El Yamani and Damiano Visali
 
 We will build a marketplace to allow the client (buyers) and sellers sell and buy product in a easy and safe way.
 
+USER GUIDE: https://youtu.be/YDsPHWi-HRU
+
 ###### As a seller : 
  * I can register, login, and logout
  * I can add and modify products for sale and track sales of these products
